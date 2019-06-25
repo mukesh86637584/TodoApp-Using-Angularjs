@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title>Todo App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body ng-app="myModule">
+
+    <div class="container">
+        <h1>Todo App</h1>
+        <div class = "row" ng-controller="myController">
+            <div class= "col-sm-6" id="first">
+
+                <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="{{message}}" aria-describedby="basic-addon2" ng-model="newTodo">
+                        <div class="input-group-append">
+                        <button ng-show="addOrEdit == 'add'" ng-click="addTodo('add')" class="btn btn-primary btn-lg">Add</button>
+                        <button ng-show="addOrEdit == 'edit'" ng-click="addTodo('edit')" class="btn btn-success btn-lg">Save</button>
+                        </div>
+                      </div>
+
+
+               <!-- <button ng-show="addOrEdit == 'add'" ng-click="addTodo('add')" class="btn btn-outline-primary btn-lg">Add</button>-->
+                <!-- <button ng-show="addOrEdit == 'edit'" ng-click="addTodo('edit')" class="btn btn-outline-success btn-lg">Save</button> -->
+            </div>
+            <div class = "col-sm-6" id="second">
+
+                <div>
+                    <ul>
+                        <div>
+                            <table border="1">
+                                <thead ng-show="todos.length>0">
+                                    <th>Id</th>
+                                    <th>Tasks</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                    <!-- <div ng-repeat="todo in todos"> -->
+                                    <tr ng-repeat="todo in todos">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{todo.title}}</td>
+                                        <td>
+                                                <button type="button" class="btn btn-outline-danger btn-lg" ng-click="editTodo(todo.id)">Edit</button>
+                                                <button type="button" ng-click="clearTodo(todo.id)"  ng-model="todo.done" class="btn btn-outline-primary btn-lg">Clear</button>
+                                        </td>
+                                    </tr>
+                                    <!-- </div> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+</body>
+</html>
